@@ -5,7 +5,9 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import static com.codeborne.selenide.Selenide.*;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class AppCardDeliveryTaskOneTest {
 
@@ -16,18 +18,19 @@ public class AppCardDeliveryTaskOneTest {
     @Test
 
     public void shouldBeSuccessfullyCompleted() {
-        open ("http://localhost:9999");
+        open("http://localhost:9999");
 
-        $( "[data-test-id='city'] input").setValue("Москва");
-        String planningDate = generateDate(  3, "dd.mm.yyyy");
-        $( "[data-test-id='data'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $( "[data-test-id='data'] input").setValue(planningDate);
-        $( "[data-test-id='name']").setValue("Иванов Семен");
-        $( "[data-test-id='phone']").setValue("+79633523355");
-        $( "[data-test-id='agreement']").click();
-        $( "button.button").click();
-        $( ".notification__content")
-        .shouldBe(Condition.visible, Duration.ofSeconds(15))
-        .shouldHave(Condition.exactText("Встреча успешно забронирована на " + planningDate));
+        $("[data-test-id='city'] input").setValue("Москва");
+        String planningDate = generateDate(3, "dd.MM.yyyy");
+        $("[data-test-id='data'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='data'] input").setValue(planningDate);
+        $("[data-test-id='name']").setValue("Иванов Семен");
+        $("[data-test-id='phone']").setValue("+79633523355");
+        $("[data-test-id='agreement']").click();
+        $("button.button").click();
+        $(".notification__content")
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + planningDate));
     }
 }
+
