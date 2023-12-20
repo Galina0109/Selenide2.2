@@ -1,5 +1,4 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.conditions.webdriver.Url;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -20,7 +19,7 @@ public class AppCardDeliveryTaskOneTest {
         open ("http://localhost:9999");
 
         $( "[data-test-id='city'] input").setValue("Москва");
-        String planningDate = generateDate(  4, "dd.mm.yyyy");
+        String planningDate = generateDate(  3, "dd.mm.yyyy");
         $( "[data-test-id='data'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $( "[data-test-id='data'] input").setValue(planningDate);
         $( "[data-test-id='name']").setValue("Иванов Семен");
