@@ -19,10 +19,9 @@ public class AppCardDeliveryTaskOneTest {
 
     public void shouldBeSuccessfullyCompleted() {
         open("http://localhost:9999");
-
         $("[data-test-id='city'] input").setValue("Москва");
         String planningDate = generateDate(3, "dd.MM.yyyy");
-        $("[data-test-id='data'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='data'] input").sendKgeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id='data'] input").setValue(planningDate);
         $("[data-test-id='name']").setValue("Иванов Семен");
         $("[data-test-id='phone']").setValue("+79633523355");
@@ -33,4 +32,3 @@ public class AppCardDeliveryTaskOneTest {
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + planningDate));
     }
 }
-
